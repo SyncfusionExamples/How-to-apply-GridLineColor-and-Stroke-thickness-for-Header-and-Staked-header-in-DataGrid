@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:local="clr-namespace:SfDataGridSample"
+             x:Class="SfDataGridSample.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:EmployeeViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>
+
+    <syncfusion:SfDataGrid x:Name="dataGrid" 
+                           ColumnWidthMode="Auto"
+                           GridLinesVisibility="Both"
+                           HeaderGridLinesVisibility="Both"
+                           AutoGenerateColumnsMode="None"
+                           ItemsSource="{Binding Employees}">
+
+        <syncfusion:SfDataGrid.DefaultStyle>
+            <syncfusion:DataGridStyle HeaderGridLineColor="Red"
+                                      HeaderGridLineStrokeThickness="5" />
+        </syncfusion:SfDataGrid.DefaultStyle>
+
+        <syncfusion:SfDataGrid.Columns>
+            <syncfusion:DataGridNumericColumn MappingName="EmployeeID"
+                                              Format="#"
+                                              HeaderText="Employee ID" />
+            <syncfusion:DataGridTextColumn MappingName="Name"
+                                           HeaderText="Employee Name" />
+            <syncfusion:DataGridTextColumn MappingName="Title"
+                                           HeaderText="Designation" />
+            <syncfusion:DataGridDateColumn MappingName="HireDate"
+                                           HeaderText="Hire Date" />
+
+        </syncfusion:SfDataGrid.Columns>
+
+        <syncfusion:SfDataGrid.StackedHeaderRows>
+            <syncfusion:DataGridStackedHeaderRow>
+                <syncfusion:DataGridStackedHeaderRow.Columns>
+                    <syncfusion:DataGridStackedColumn ColumnMappingNames="EmployeeID,Name,Title,HireDate"
+                                                      Text="Employee Details Section"
+                                                      MappingName="SalesDetails" />
+                </syncfusion:DataGridStackedHeaderRow.Columns>
+            </syncfusion:DataGridStackedHeaderRow>
+            <syncfusion:DataGridStackedHeaderRow>
+                <syncfusion:DataGridStackedHeaderRow.Columns>
+                    <syncfusion:DataGridStackedColumn ColumnMappingNames="EmployeeID,Name"
+                                                      Text="Employee Details"
+                                                      MappingName="OrderDetails" />
+                    <syncfusion:DataGridStackedColumn ColumnMappingNames="Title,HireDate"
+                                                      Text="Work Details"
+                                                      MappingName="CustomerDetails" />
+                </syncfusion:DataGridStackedHeaderRow.Columns>
+            </syncfusion:DataGridStackedHeaderRow>
+        </syncfusion:SfDataGrid.StackedHeaderRows>
+    </syncfusion:SfDataGrid>
+    
+</ContentPage>
